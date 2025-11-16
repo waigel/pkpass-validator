@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@waigel/pkpass-validator demo</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>PKPass Validator</h1>
+      <p>Upload an Apple Wallet pass (.pkpass) to run the same checks as the npm library.</p>
+    </header>
+
+    <main>
+      <section class="picker">
+        <input type="file" id="pkpass-file" accept=".pkpass" />
+        <p class="hint">Files stay on-device and are never uploaded.</p>
+      </section>
+
+      <section id="status" class="status">Waiting for a file…</section>
+      <section id="results" class="results"></section>
+      <section id="error" class="error" hidden></section>
+    </main>
+
+    <footer>
+      <p>
+        Built with <code>@waigel/pkpass-validator</code>. See the
+        <a href="https://github.com/waigel/pkpass-validator" target="_blank" rel="noreferrer">project on GitHub</a>.
+      </p>
+    </footer>
+
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>
