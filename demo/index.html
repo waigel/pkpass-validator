@@ -12,16 +12,32 @@
       <p>Upload an Apple Wallet pass (.pkpass) to run the same checks as the npm library.</p>
     </header>
 
-    <main>
-      <section class="picker">
-        <input type="file" id="pkpass-file" accept=".pkpass" />
-        <p class="hint">Files stay on-device and are never uploaded.</p>
-      </section>
+      <main>
+        <section class="picker">
+          <input type="file" id="pkpass-file" accept=".pkpass" />
+          <p class="hint">Files stay on-device and are never uploaded.</p>
+        </section>
 
-      <section id="status" class="status">Waiting for a file…</section>
-      <section id="results" class="results"></section>
-      <section id="error" class="error" hidden></section>
-    </main>
+        <section class="readiness">
+          <div id="verdict" class="readiness-card readiness-card--idle">
+            <div id="verdict-icon" class="readiness-card__icon" aria-hidden="true"></div>
+            <div class="readiness-card__content">
+              <p class="readiness-card__eyebrow">Apple Wallet verdict</p>
+              <p id="verdict-status" class="readiness-card__status">Waiting for a file…</p>
+              <p id="verdict-detail" class="readiness-card__description">
+                Upload a pass to learn whether Apple would accept it.
+              </p>
+              <ul id="verdict-reasons" class="readiness-card__reasons" hidden></ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="status" class="status">Waiting for a file…</section>
+        <section id="results" class="results results--empty">
+          <p>No validation results yet.</p>
+        </section>
+        <section id="error" class="error" hidden></section>
+      </main>
 
     <footer>
       <p>

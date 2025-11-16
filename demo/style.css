@@ -2,6 +2,18 @@
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: #0b1f2a;
   background-color: #f5f7fb;
+  --surface: #ffffff;
+  --elevation: rgba(15, 23, 42, 0.08);
+  --success: #0f9d58;
+  --success-soft: #e3f8ed;
+  --danger: #e53e3e;
+  --danger-soft: #ffe3e3;
+  --warning: #dd6b20;
+  --warning-soft: #fef4e6;
+  --info: #2b6cb0;
+  --info-soft: #ebf4ff;
+  --muted: #4a5568;
+  --border: #e2e8f0;
 }
 
 body {
@@ -29,9 +41,9 @@ main {
 
 .picker {
   padding: 1.5rem;
-  background: white;
+  background: var(--surface);
   border-radius: 12px;
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 24px var(--elevation);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -46,12 +58,101 @@ main {
 
 .hint {
   font-size: 0.9rem;
-  color: #4a5568;
+  color: var(--muted);
   margin: 0;
 }
 
+.readiness {
+  margin-top: 1.5rem;
+}
+
+.readiness-card {
+  display: flex;
+  gap: 1rem;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.07);
+  align-items: flex-start;
+}
+
+.readiness-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf2f7;
+  color: var(--info);
+}
+
+.readiness-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.readiness-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.readiness-card__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.readiness-card__status {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.readiness-card__description {
+  margin: 0;
+  color: var(--muted);
+}
+
+.readiness-card__reasons {
+  margin: 0.25rem 0 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.readiness-card--pass {
+  border-color: rgba(15, 157, 88, 0.35);
+}
+
+.readiness-card--pass .readiness-card__status {
+  color: var(--success);
+}
+
+.readiness-card--pass .readiness-card__icon {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.readiness-card--fail {
+  border-color: rgba(229, 62, 62, 0.3);
+}
+
+.readiness-card--fail .readiness-card__status {
+  color: var(--danger);
+}
+
+.readiness-card--fail .readiness-card__icon {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
 .status {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   font-weight: 600;
 }
 
@@ -63,16 +164,18 @@ main {
 .results table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: var(--surface);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .results th,
 .results td {
-  padding: 0.75rem 1rem;
+  padding: 0.9rem 1.2rem;
   border-bottom: 1px solid #edf2f7;
   text-align: left;
+  vertical-align: top;
 }
 
 .results tr:last-child th,
@@ -80,12 +183,80 @@ main {
   border-bottom: none;
 }
 
-.results tr.ok {
-  background: #f0fff4;
+.results--empty {
+  background: transparent;
+  box-shadow: none;
 }
 
-.results tr.fail {
-  background: #fff5f5;
+.results--empty p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.result-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.result-label__title {
+  font-weight: 600;
+}
+
+.result-value {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.status-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf2f7;
+  color: var(--info);
+}
+
+.status-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.result-value__primary {
+  margin: 0;
+  font-weight: 600;
+}
+
+.result-value__secondary {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.result-row--pass .status-icon {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.result-row--fail .status-icon {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.result-row--info .status-icon {
+  background: var(--info-soft);
+  color: var(--info);
+}
+
+.result-row--pass .result-value__primary {
+  color: var(--success);
+}
+
+.result-row--fail .result-value__primary {
+  color: var(--danger);
 }
 
 .error {
@@ -98,6 +269,6 @@ main {
 
 footer {
   font-size: 0.9rem;
-  color: #4a5568;
+  color: var(--muted);
   text-align: center;
 }
