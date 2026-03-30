@@ -1,5 +1,7 @@
 # @waigel/pkpass-validator
 
+> Check out pkpass debug: https://github.com/waigel/pkpass-debug
+
 A lean, TypeScript-first validator for Apple Wallet passes (.pkpass) that mirrors the official Passbook validation rules from [tomasmcguinness/dotnet-passbook-validator](https://github.com/tomasmcguinness/dotnet-passbook-validator). The library works in both Node.js and modern browsers, exposes a typed API, and ships with a GitHub Pages demo for on-device validation.
 
 ## Highlights
